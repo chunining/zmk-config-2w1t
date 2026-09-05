@@ -1,0 +1,12 @@
+if SHIELD_MACRO2W1T
+
+config ZMK_KEYBOARD_NAME
+    default "2W1T Macro"
+
+config EC11
+    default y
+
+config EC11_TRIGGER_GLOBAL_THREAD
+    default y
+
+endif
