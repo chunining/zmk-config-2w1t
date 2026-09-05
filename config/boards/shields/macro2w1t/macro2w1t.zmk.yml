@@ -1,0 +1,9 @@
+file_format: "1"
+id: macro2w1t
+name: 2W1T Macro Pad
+type: shield
+url: ""
+requires: [pro_micro]
+features:
+  - keys
+  - encoder
