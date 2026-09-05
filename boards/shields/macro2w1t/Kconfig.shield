@@ -1,2 +1,0 @@
-config SHIELD_MACRO2W1T
-    def_bool $(shields_list_contains,macro2w1t)

@@ -1,6 +1,0 @@
-if SHIELD_MACRO2W1T
-
-config ZMK_KEYBOARD_NAME
-    default "2W1T Macro"
-
-endif
