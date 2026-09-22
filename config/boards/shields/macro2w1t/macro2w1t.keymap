@@ -10,39 +10,48 @@
         /*
          * TEST LAYER
          * Every position types a different letter so you can prove each
-         * switch, both encoder pushes and all five nav directions work.
-         * Open a text editor, press everything, compare with this table:
+         * switch, both wheel presses and all five nav directions work:
          *
-         *   physical            letter
-         *   -------------------------------------------
          *   top row, keys 1-3    A B C
-         *   left roller push     S
-         *   right roller push    T
+         *   left wheel press     S
+         *   right wheel press    T
          *   2nd row              D E F G H
          *   3rd row              I J K L M
-         *   4th row              N O P Q R
-         *   5-way left           U
-         *   5-way right          V
-         *   5-way up             W
-         *   5-way down           X
-         *   5-way press          Y
-         *   left roller turn     1 / 2
-         *   right roller turn    3 / 4
+         *   4th row              N O P Q  (5th is the Studio layer key)
+         *   5-way l/r/u/d/press  U V W X Y
+         *   left wheel turn      1 / 2
+         *   right wheel turn     3 / 4
          *
-         * Anything that types the wrong letter means that row/column pair
-         * is swapped; anything that types nothing is an open circuit.
-         * Replace this layer with real bindings once it all checks out.
+         * The bottom-right key (where R used to be) now holds the Studio
+         * layer: hold it and press the top-left key to unlock Studio.
          */
         test_layer {
             bindings = <
                 &kp A  &kp B  &kp C  &kp S  &kp T     &kp U
                 &kp D  &kp E  &kp F  &kp G  &kp H     &kp V
                 &kp I  &kp J  &kp K  &kp L  &kp M     &kp W
-                &kp N  &kp O  &kp P  &kp Q  &kp R     &kp X
+                &kp N  &kp O  &kp P  &kp Q  &mo 1     &kp X
                                                       &kp Y
             >;
 
-            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp UP DOWN>;
+            sensor-bindings = <&inc_dec_kp N1 N2 &inc_dec_kp N3 N4>;
+        };
+
+        /*
+         * STUDIO LAYER
+         * Only one live key: top-left unlocks ZMK Studio for editing.
+         * Everything else falls through to the layer below.
+         */
+        studio_layer {
+            bindings = <
+                &studio_unlock  &trans  &trans  &trans  &trans    &trans
+                &trans          &trans  &trans  &trans  &trans    &trans
+                &trans          &trans  &trans  &trans  &trans    &trans
+                &trans          &trans  &trans  &trans  &trans    &trans
+                                                                  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp N1 N2 &inc_dec_kp N3 N4>;
         };
     };
 };
